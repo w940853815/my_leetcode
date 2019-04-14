@@ -45,20 +45,23 @@
 #
 class Solution:
     def countAndSay(self, n: int) -> str:
-        str="1211"
-        retu_str=""
-        count=1
-        for i in range(len(str)):
-            if i==len(str)-1:
-                retu_str = str(count) + str[i]
-            if str[i]==str[i+1]:
-                count=count+1
-            else:
-                count = 1
-                retu_str=str(count)+str[i]
-        return retu_str
+        string = ["1"]
+        for j in range(n):
+            retu_str = ""
+            count = 1
+            for i in range(len(string[j])):
+                if i==len(string[j])-1:
+                    retu_str = retu_str+ str(count) + string[j][i]
+                    string.append(retu_str)
+                    break
+                if string[j][i]==string[j][i+1]:
+                    count=count+1
+                else:
+                    retu_str=retu_str+ str(count)+string[j][i]
+                    count = 1
+        return string[n-1]
 
 if __name__=='__main__':
     s=Solution()
-    a=s.countAndSay(2)
-    print(1)
+    a=s.countAndSay(6)
+    print(a)
