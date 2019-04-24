@@ -29,42 +29,37 @@ class Solution:
     def maxSubArray(self, nums) -> int:
         def find_max_subArray(low,high,A):
             mid = int((low + high) / 2)
-            print('----------')
-            print(low,high,mid,A)
-            print('----------')
             if high==low:
-                # print(high)
-                # print(A)
                 return low,high,A[low] #只有一个元素
             else:
-                print('left')
                 left_low,left_high,left_sum=find_max_subArray(low,mid,A)
-                print(left_low,left_high,left_sum)
-                print('right')
+                print('left',left_low,left_high,left_sum)
                 right_low,right_high,right_sum=find_max_subArray(mid+1,high,A)
-                print(right_low,right_high,right_sum)
-                print('cross')
+                print('right',right_low,right_high,right_sum)
                 cross_low,cross_high,cross_sum = find_max_cross_subArray(low,mid,high,A)
-                print(cross_low,cross_high,cross_sum)
+                print('cross',cross_low,cross_high,cross_sum)
                 if left_sum>=right_sum and left_sum>=cross_sum:
                     return left_low,left_high,left_sum
                 if right_sum>=left_sum and right_sum>=cross_sum:
                     return right_low,right_high,right_sum
                 else:
                     return cross_low,cross_high,cross_sum
+
         def find_max_cross_subArray(low,mid,high,A):
+            print(11111,low,mid,high,A)
+
             sum=0
             max_left=None
             max_right=None
             left_sum=float('-inf')
-            for i in range(low,mid):
+            for i in range(mid,low,-1):
                 sum = sum+A[i]
                 if sum > left_sum:
                     left_sum = sum
                     max_left = i
             right_sum = float('-inf')
             sum = 0
-            for i in range(mid,high):
+            for i in range(mid+1,high):
                 sum = sum+A[i]
                 if sum > right_sum:
                     right_sum = sum
