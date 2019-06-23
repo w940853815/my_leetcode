@@ -26,3 +26,6 @@ if __name__ == "__main__":
     print('sort before', li)
     bubble_sort_pro(li)
     print('sort after', li)
+
+# 时间复杂度（n^2）
+# 最优时间复杂度（n）
