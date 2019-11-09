@@ -9,7 +9,6 @@
 
 class Solution:
     def compress(self, chars: list) -> int:
-        res = []
         # 处理chars最后一个元素
         chars.append('^')
         pre_char = chars[0]
@@ -22,12 +21,10 @@ class Solution:
             else:
                 chars[index] = pre_char
                 index += 1
-                # res.append(pre_char)
                 if count > 1:
                     for s in str(count):
                         chars[index] = s
                         index += 1
-                        # res.append(s)
                 pre_char = char
                 count = 1
         return index
