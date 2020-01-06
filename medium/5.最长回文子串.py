@@ -64,5 +64,5 @@ class Solution:
 # @lc code=end
 if __name__ == "__main__":
     s = Solution()
-    res = s.longestPalindrome('sabaw')
+    res = s.longestPalindrome('asdasdasdaddtattarrattatddqweqdasdasdasd')
     print(res)
