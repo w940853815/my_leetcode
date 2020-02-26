@@ -26,3 +26,16 @@ if __name__ == '__main__':
 > 第二,remove 会移除第一个匹配项
 > 当 remove 前两个 1 之后,nums[2]就不存在了,所以 for 循环直接结束.
   
+## 回溯算法
+```python
+result = []
+def backtrack(路径, 选择列表):
+    if 满足结束条件:
+        result.add(路径)
+        return
+    
+    for 选择 in 选择列表:
+        做选择
+        backtrack(路径, 选择列表)
+        撤销选择
+```
