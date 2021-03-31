@@ -38,4 +38,14 @@ def backtrack(路径, 选择列表):
         做选择
         backtrack(路径, 选择列表)
         撤销选择
+
+def backtrack2(未探索区域, res, path):
+    if path 满足条件:
+        res.add(path) # 深度拷贝
+        # return  # 如果不用继续搜索需要 return
+    for 选择 in 未探索区域当前可能的选择:
+        if 当前选择符合要求:
+            path.add(当前选择)
+            backtrack2(新的未探索区域, res, path)
+            path.pop()
 ```
