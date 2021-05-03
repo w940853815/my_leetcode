@@ -40,19 +40,19 @@
 
 class Solution:
     def reverse(self, x: int) -> int:
-        MAX = 2**31-1
-        MIN = -2**31
+        MAX = 2 ** 31 - 1
+        MIN = -(2 ** 31)
         x_string = str(x)
         reverse_str = str()
-        if x_string.startswith('-'):
+        if x_string.startswith("-"):
             reverse_str = x_string[::-1]
             no_0_str = Solution.remove_0_char(reverse_str[0:-1])
-            reverse_str = '-'+no_0_str
+            reverse_str = "-" + no_0_str
         else:
             reverse_str = x_string[::-1]
             reverse_str = Solution.remove_0_char(reverse_str)
         print(reverse_str)
-        if reverse_str=='':
+        if reverse_str == "":
             return 0
         else:
             reverse = int(reverse_str)
@@ -63,8 +63,25 @@ class Solution:
 
     @staticmethod
     def remove_0_char(str):
-        if str.startswith('0'):
+        if str.startswith("0"):
             n_str = str[1:]
             return Solution.remove_0_char(n_str)
         else:
             return str
+
+    def reverse2(self, x: int) -> int:
+        if x == 0:
+            return 0
+        minus_flag = False
+        if x < 0:
+            x = -x
+            minus_flag = True
+        res = 0
+        while x != 0:
+            res = res * 10 + x % 10
+            x = x // 10
+        if minus_flag:
+            res = -res
+        if res < -pow(2, 31) or res > pow(2, 31) - 1:
+            return 0
+        return res
