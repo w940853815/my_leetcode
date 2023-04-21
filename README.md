@@ -49,3 +49,6 @@ def backtrack2(未探索区域, res, path):
             backtrack2(新的未探索区域, res, path)
             path.pop()
 ```
+
+- [86] 分隔链表
+![](./img/86.jpg)
