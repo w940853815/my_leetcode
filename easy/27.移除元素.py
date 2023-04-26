@@ -3,14 +3,14 @@
 #
 # [27] 移除元素
 #
-# https://leetcode-cn.com/problems/remove-element/description/
+# https://leetcode.cn/problems/remove-element/description/
 #
 # algorithms
-# Easy (59.12%)
-# Likes:    891
+# Easy (59.25%)
+# Likes:    1769
 # Dislikes: 0
-# Total Accepted:    371.4K
-# Total Submissions: 621.7K
+# Total Accepted:    1M
+# Total Submissions: 1.7M
 # Testcase Example:  '[3,2,2,3]\n3'
 #
 # 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
@@ -71,16 +71,27 @@
 #
 #
 #
-
+from typing import List
 # @lc code=start
+
+
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        i = 0
-        for j in range(len(nums)):
-            if nums[j] != val:
-                nums[i] = nums[j]
-                i += 1
-        return i
+        # fast slow
+        slow, fast = 0, 0
+        while fast < len(nums):
+            if nums[fast] != val:
+                nums[slow] = nums[fast]
+                slow += 1
+                fast += 1
+            else:
+                fast += 1
+        return slow
 
 
 # @lc code=end
+if __name__ == '__main__':
+    s = Solution()
+    nums = [0, 1, 2, 2, 3, 0, 4, 2]
+    res = s.removeElement(nums, 2)
+    print(res, nums)
