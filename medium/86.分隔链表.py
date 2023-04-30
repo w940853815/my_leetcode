@@ -69,6 +69,7 @@ class Solution:
                 p1.next = p
                 p1 = p1.next
             p = p.next
+        # 要断开p2节点 不然链表会出现环
         p2.next = None
         p1.next = dummy2.next
         return dummy1.next
